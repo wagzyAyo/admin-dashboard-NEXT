@@ -96,7 +96,12 @@ export default function Home() {
           value={url} onChange={e => setUrl(e.target.value)} required/>
         </div>
 
-        <input type="submit" value={'submit'} className="bg-sky-800 text-center text-white p-[10px] rounded-md mt-[30px]" />
+        <button
+                type="submit"
+                className=" mt-[20px] flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+              >
+                submit
+             </button>
       </form>
     </div>
   );
