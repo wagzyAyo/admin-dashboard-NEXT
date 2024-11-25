@@ -45,7 +45,7 @@ export default function Home() {
           <input 
           className="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow"
           type="text" name="name" placeholder="Enter property name" 
-          value={name} onChange={e => setName(e.target.value)}/>
+          value={name} onChange={e => setName(e.target.value)} required/>
         </div>
 
         <div className="grid justify-center align-middle w-full max-w-sm min-w-[200px]">
@@ -53,7 +53,7 @@ export default function Home() {
           <input 
           className="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow"
           type="text" name="location" placeholder="Enter property location" 
-          value={location} onChange={e => setLocation(e.target.value)}/>
+          value={location} onChange={e => setLocation(e.target.value)} required/>
         </div>
 
         <div className="grid justify-center align-middle w-full max-w-sm min-w-[200px]">
@@ -61,7 +61,7 @@ export default function Home() {
           <input 
           className="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow"
           type="text" name="size" placeholder="Enter property size" 
-          value={size} onChange={e => setSize(e.target.value)}/>
+          value={size} onChange={e => setSize(e.target.value)} required/>
         </div>
 
         <div className="grid justify-center align-middle w-full max-w-sm min-w-[200px]">
@@ -69,7 +69,7 @@ export default function Home() {
           <input 
           className="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow"
           type="text" name="short" placeholder="Enter short description" 
-          value={short} onChange={e => setShort(e.target.value)}/>
+          value={short} onChange={e => setShort(e.target.value)} required/>
         </div>
 
         <div className="grid justify-center align-middle w-full max-w-sm min-w-[200px]">
@@ -77,7 +77,7 @@ export default function Home() {
           <input 
           className="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow"
           type="text" name="amount" placeholder="Enter amount" 
-          value={amount} onChange={e => setAmount(e.target.value)}/>
+          value={amount} onChange={e => setAmount(e.target.value)} required/>
         </div>
 
         <div className="grid justify-center w-full max-w-sm min-w-[200px]">
@@ -85,7 +85,7 @@ export default function Home() {
           <textarea 
           className="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow"
           name="description" placeholder="Enter full description" 
-          value={description} onChange={e => setDescription(e.target.value)}/>
+          value={description} onChange={e => setDescription(e.target.value)} required/>
         </div>
 
         <div className="grid justify-center align-middle w-full max-w-sm min-w-[200px]">
@@ -93,10 +93,10 @@ export default function Home() {
           <input 
           className="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow"
           type="text" name="url" placeholder="Enter image Urls seperated by commas" 
-          value={url} onChange={e => setUrl(e.target.value)}/>
+          value={url} onChange={e => setUrl(e.target.value)} required/>
         </div>
 
-
+        <input type="submit" value={'submit'} className="bg-sky-800 text-center text-white p-[10px] rounded-md mt-[30px]" />
       </form>
     </div>
   );
