@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose, { models } from "mongoose";
 
 const propertySchema = new mongoose.Schema({
     name: {
@@ -26,5 +26,5 @@ const propertySchema = new mongoose.Schema({
     }
 })
 
-const propertyModels = mongoose.model('property', propertySchema)
+const propertyModels = models.property ||  mongoose.model('property', propertySchema)
 export default propertyModels
