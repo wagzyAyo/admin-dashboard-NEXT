@@ -1,11 +1,19 @@
 import mongoose, { models } from "mongoose";
 
 const propertySchema = new mongoose.Schema({
+    tag: {
+        type: String,
+        require: true
+    },
     name: {
         type: String,
         require: true
     },
     size: {
+        type: String,
+        require: true
+    },
+    location: {
         type: String,
         require: true
     },
