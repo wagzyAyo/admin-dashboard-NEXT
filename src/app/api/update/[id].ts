@@ -7,6 +7,7 @@ export async function PUT(request: Request, {params}: {params: {id: string}}){
         await connectDb();
         const {id} = params;
         const newData = await request.json()
+        console.log(newData)
         const updateProperty = await propertyModels.findOneAndUpdate({_id: id}, newData, {
             new: true
         });
