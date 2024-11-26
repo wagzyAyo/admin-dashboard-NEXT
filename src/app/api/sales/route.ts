@@ -3,9 +3,9 @@ import { connectDb } from "@/lib/connectDb";
 import propertyModels from "@/models/props";
 
 export async function GET(){
-    await connectDb()
+
     try {
-        
+        await connectDb()
         const salesData = await propertyModels.find({tag: 'sale'})
         if(!salesData){
             return NextResponse.json([],{status: 201})

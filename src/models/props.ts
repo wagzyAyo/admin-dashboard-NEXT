@@ -25,7 +25,7 @@ const propertySchema = new mongoose.Schema({
         type: Number,
         require: true,
     },
-    imageUrl: {
+    imageURL: {
         type: [String],
     },
     description: {
