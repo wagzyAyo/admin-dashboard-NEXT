@@ -6,15 +6,16 @@ export async function POST(request: Request){
     try {
         await connectDb();
         const data = await request.json()
-        const {tag, name, size, shortDescription, amount, description, location, imageURL} = data;
-        if(!tag || !name || !size || !shortDescription || !amount || !description || !location || !imageURL){
+        const {tag, name, size, short, amount, description, location, imageURL} = data;
+        if(!tag || !name || !size || !short || !amount || !description || !location || !imageURL){
             return NextResponse.json({message: "one or more entries are empty"}, {status: 400})
         }
         const newImageUrl = imageURL.split(',').map((url: string) => url.trim())
         const newData = new propertyModels({
             tag,
             name,
-            shortDescription,
+            size,
+            short: short,
             amount,
             location,
             description,
