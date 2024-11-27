@@ -7,7 +7,7 @@ interface propData {
   _id: string,
   name: string,
   size: string,
-  shortDescription: string,
+  short: string,
   amount: number,
   location: string,
   description: string,
@@ -41,7 +41,7 @@ const Page = () => {
           name={propData.name} 
           size={propData.size} 
           amount={propData.amount} 
-          short={propData.shortDescription} 
+          short={propData.short} 
           location={propData.location} 
           description={propData.description} 
           imageURL={propData.imageURL}/>
