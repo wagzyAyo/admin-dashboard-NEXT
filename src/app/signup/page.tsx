@@ -21,6 +21,9 @@ const Page = () => {
         })
         if(response.status === 200){
           console.log("User signed Up")
+        }else{
+          console.log('Unable to signup user')
+          return
         }
       } catch (err) {
         console.log("Error signing up new", err)

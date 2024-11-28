@@ -1,14 +1,36 @@
 "use client"
-import { useState } from "react"
+import { FormEvent, useState } from "react"
+import axios from "axios";
+
+
 const Page = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+
+    const handleSubmit = async (e: FormEvent<HTMLFormElement>)=>{
+      e.preventDefault();
+      try {
+        const response = await axios.post('api/login', {
+          email,
+          password
+        })
+        if(response.status === 200){
+          console.log('Logged in');
+          return;
+        }else{
+          console.log('Invalid login credentials');
+          return;
+        }
+      } catch (err) {
+        console.log('Error loging in user', err)
+      }
+    }
 
   return (
     <div>
         <h2 className="text-center text-2xl mt-[20px]">Login</h2>
       <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-          <form method="POST" className="space-y-6">
+          <form method="POST" className="space-y-6" onSubmit={handleSubmit}>
             <div>
               <label htmlFor="email" className="block text-sm/6 font-medium text-gray-900">
                 Email address
