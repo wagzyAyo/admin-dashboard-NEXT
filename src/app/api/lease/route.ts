@@ -9,7 +9,7 @@ export async function GET(){
         if(!leaseData){
             return NextResponse.json([],{status: 201})
         }
-        return NextResponse.json(leaseData, {status: 200})
+        return NextResponse.json(leaseData.reverse(), {status: 200})
 
     } catch (err) {
         console.log("Error getting lease data",err)

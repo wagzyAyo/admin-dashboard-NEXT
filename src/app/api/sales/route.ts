@@ -10,7 +10,7 @@ export async function GET(){
         if(!salesData){
             return NextResponse.json([],{status: 201})
         }
-        return NextResponse.json(salesData, {status: 200})
+        return NextResponse.json(salesData.reverse(), {status: 200})
     } catch (err) {
         console.log("Error getting sales data", err);
         return NextResponse.json({message: "Internal server error"}, {status: 500})

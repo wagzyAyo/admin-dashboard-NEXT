@@ -33,7 +33,7 @@ const Page = () => {
 
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <h1>Lease route</h1>
+      <h1 className="text-2xl text-center">Lease</h1>
       <div className="mt-[40px] flex gap-[20px] flex-wrap align-middle justify-start">
          {data.map((propData)=>{
           return <Card  
