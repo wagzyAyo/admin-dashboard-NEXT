@@ -1,15 +1,39 @@
 "use client"
-import { useState } from "react"
+import axios from "axios";
+import { FormEvent, useState } from "react"
+
+
 const Page = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
 
+    const handleSubmit = async (e: FormEvent<HTMLFormElement>)=>{
+      e.preventDefault();
+      try {
+        if(confirmPassword !== password){
+          console.log("Password and confirm password do not match");
+          return
+        }
+        const response = await axios.post("/api/newuser", {
+          email,
+          password
+        })
+        if(response.status === 200){
+          console.log("User signed Up")
+        }
+      } catch (err) {
+        console.log("Error signing up new", err)
+
+      }
+
+    }
+
   return (
     <div>
         <h2 className="text-center text-2xl mt-[20px]">Sign Up</h2>
       <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-          <form action="#" method="POST" className="space-y-6">
+          <form method="POST" className="space-y-6" onSubmit={handleSubmit}>
             <div>
               <label htmlFor="email" className="block text-sm/6 font-medium text-gray-900">
                 Email address

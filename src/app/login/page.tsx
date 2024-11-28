@@ -8,7 +8,7 @@ const Page = () => {
     <div>
         <h2 className="text-center text-2xl mt-[20px]">Login</h2>
       <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-          <form action="#" method="POST" className="space-y-6">
+          <form method="POST" className="space-y-6">
             <div>
               <label htmlFor="email" className="block text-sm/6 font-medium text-gray-900">
                 Email address
