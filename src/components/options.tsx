@@ -1,17 +1,35 @@
-import { FiDelete } from "react-icons/fi"
-import { BiEdit } from "react-icons/bi"
+
+import { MdOutlineDelete } from "react-icons/md";
+import { MdModeEdit } from "react-icons/md";
+import axios from "axios"
+import { redirect } from "next/navigation"
+
 interface idProps {
     id: string
 }
 
 const Options = ({id}: idProps) => {
+
+
+    const handleUpdate = ()=>{
+        redirect(`/update/${id}`)
+    }
+
+    const handleDelete = async ()=>{
+        const response = await axios.post(`/api/delete/${id}`)
+        if(response.status === 200){
+            
+        }else{
+            console.log('Error deleting property')
+        }
+    }
   return (
-    <div>
-        <div>
-            <BiEdit onClick={`/update/${id}`} />
+    <div className="flex justify-center h-[20%] w-[20%] p-1 bg-white/30 rounded-md bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-70 gap-3">
+        <div className="cursor-pointer ">
+            <MdModeEdit onClick={handleUpdate} color="green"/>
         </div>
-      <div>
-        <FiDelete onClick={`/api/delete/${id}`} />
+      <div className="cursor-pointer ">
+        <MdOutlineDelete onClick={handleDelete} color="red" />
       </div>
     </div>
   )
