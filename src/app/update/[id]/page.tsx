@@ -15,7 +15,7 @@ interface PropData {
 
 const Update = ({ params }: { params: { id: string } }) => {
   const { id } = params;
-  const [propData, setPropData] = useState<PropData | null>(null);  // Handle null state
+  const [propData, setPropData] = useState<PropData | null>(null); 
 
   useEffect(() => {
     const getData = async () => {

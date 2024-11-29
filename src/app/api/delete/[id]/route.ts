@@ -5,7 +5,7 @@ import { NextResponse, NextRequest } from "next/server";
 export async function DELETE(req: NextRequest, {params}: {params: {id: string}}){
     try {
         await connectDb();
-        const {id} = params;
+        const {id} = await params;
         const deletedProp = await propertyModels.findByIdAndDelete(id);
         if(!deletedProp){
             return NextResponse.json({message: "No property find with the id"}, {status:400})
