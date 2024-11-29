@@ -2,7 +2,7 @@
 import { MdOutlineDelete } from "react-icons/md";
 import { MdModeEdit } from "react-icons/md";
 import axios from "axios"
-import { redirect } from "next/navigation"
+import { useRouter } from "next/navigation";
 
 interface idProps {
     id: string
@@ -10,9 +10,10 @@ interface idProps {
 
 const Options = ({id}: idProps) => {
 
+    const route = useRouter();
 
     const handleUpdate = ()=>{
-        redirect(`/update/${id}`)
+        route.push(`/update/${id}`)
     }
 
     const handleDelete = async ()=>{

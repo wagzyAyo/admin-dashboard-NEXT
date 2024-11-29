@@ -37,6 +37,7 @@ const Page = () => {
          {data.map((propData)=>{
           return <Card  
           key={propData._id} 
+          id={propData._id}
           name={propData.name} 
           size={propData.size} 
           amount={propData.amount} 

@@ -37,7 +37,8 @@ const Page = () => {
       <div className="mt-[40px] flex gap-[20px] flex-wrap align-middle justify-start">
          {data.map((propData)=>{
           return <Card  
-          key={propData._id} 
+          key={propData._id}
+          id={propData._id}
           name={propData.name} 
           size={propData.size} 
           amount={propData.amount} 
