@@ -1,7 +1,7 @@
 "use client"
 import { useState, useEffect } from "react"
 import Card from "@/components/card"
-import axios from "axios"
+import {getData} from '../../utils/utils'
 
 
 interface propData {
@@ -17,16 +17,10 @@ interface propData {
 const Page = () => {
   const [data, setData] = useState<propData[]>([])
 
+
   useEffect(()=>{
-    const getData = async ()=>{
-      try {
-        const response = await axios.get('/api/sales')
-        setData(response.data)
-      } catch (err) {
-        console.log("Error getting data",err)
-      }
-    }
-    getData()
+   
+    getData('/api/sales', setData)
    
   }, [])
 
@@ -44,7 +38,9 @@ const Page = () => {
           short={propData.short} 
           location={propData.location} 
           description={propData.description} 
-          imageURL={propData.imageURL}/>
+          imageURL={propData.imageURL}
+          />
+          
          })}
          </div>
     </div>

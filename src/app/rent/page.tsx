@@ -1,7 +1,7 @@
 "use client"
 import { useState, useEffect } from "react"
 import Card from "@/components/card"
-import axios from "axios";
+import { getData } from "@/utils/utils"
 
 interface propData {
   _id: string,
@@ -18,18 +18,9 @@ const Page = () => {
   const [data, setData] = useState<propData[]>([]);
 
   useEffect(()=>{
-    const getData = async ()=>{
-      try {
-        const response = await axios.get('/api/rent');
-        setData(response.data)
-      } catch (err) {
-        console.log('Error getting data', err)
-      }
+    getData('/api/rent', setData)
       
-    }
-    getData()
-    
-  }, [])
+    }, [])
 
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">

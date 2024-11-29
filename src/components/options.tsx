@@ -5,7 +5,7 @@ import axios from "axios"
 import { useRouter } from "next/navigation";
 
 interface idProps {
-    id: string
+    id: string,
 }
 
 const Options = ({id}: idProps) => {
