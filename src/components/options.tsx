@@ -17,7 +17,7 @@ const Options = ({id}: idProps) => {
     }
 
     const handleDelete = async ()=>{
-        const response = await axios.post(`/api/delete/${id}`)
+        const response = await axios.delete(`/api/delete/${id}`)
         if(response.status === 200){
             
         }else{
