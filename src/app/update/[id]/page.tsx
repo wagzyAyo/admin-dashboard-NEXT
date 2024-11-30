@@ -27,7 +27,6 @@ const Update = ({ params }: { params: { id: string } }) => {
           throw new Error("Failed to fetch property data");
         }
         const data = await response.data;
-        console.log(data)
         setPropData(data);
       } catch (error) {
         console.error("Error fetching property data:", error);
