@@ -13,10 +13,11 @@ interface cardProps{
     short: string,
     description: string,
     imageURL: string[],
+    fetchData: (endPoint: string, stateFunction: (data: any) => void) => Promise<void>;
 }
 
 
-const Card = ({id,name, size, location,short, amount, description}: cardProps) => {
+const Card = ({id,name, size, location,short, amount, description, fetchData}: cardProps) => {
   const router = useRouter()
 
   const handleUpdate = ()=>{
@@ -29,6 +30,7 @@ const handleDelete = async ()=>{
     const response = await axios.delete(`/api/delete/${id}`)
     console.log(response.status)
     if(response.status === 200){
+        fetchData()
         router.refresh()
     }else{
         console.log('Error deleting property')

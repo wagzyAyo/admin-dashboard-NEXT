@@ -36,7 +36,9 @@ const Page = () => {
           short={propData.short} 
           location={propData.location} 
           description={propData.description} 
-          imageURL={propData.imageURL}/>
+          imageURL={propData.imageURL}
+          fetchData={getData('/api/lease', setData)}
+          />
          })}
          </div>
     </div>

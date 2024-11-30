@@ -39,6 +39,7 @@ const Page = () => {
           location={propData.location} 
           description={propData.description} 
           imageURL={propData.imageURL}
+          fetchData={getData('/api/sales', setData)}
           />
           
          })}
