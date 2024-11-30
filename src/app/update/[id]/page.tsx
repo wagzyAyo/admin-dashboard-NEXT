@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
+import axios from "axios";
 
 interface PropData {
   _id: string;
@@ -20,11 +21,13 @@ const Update = ({ params }: { params: { id: string } }) => {
   useEffect(() => {
     const getData = async () => {
       try {
-        const response = await fetch(`/api/property/${id}`);  // Fetch data from API
-        if (!response.ok) {
+        const response = await axios.get(`/api/property/${id}`);
+        console.log(response)
+        if (response.status !== 200) {
           throw new Error("Failed to fetch property data");
         }
-        const data = await response.json();
+        const data = await response.data;
+        console.log(data)
         setPropData(data);
       } catch (error) {
         console.error("Error fetching property data:", error);
