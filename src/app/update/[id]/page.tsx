@@ -117,8 +117,7 @@ const Update = ({ params }: { params: Promise<{ id: string }>}) => {
           { label: "Size", value: size, setValue: setSize },
           { label: "Short Description", value: short, setValue: setShort },
           { label: "Amount", value: amount, setValue: setAmount },
-          
-          { label: "Image URL", value: url.join(", "), setValue: (val) => setUrl(val.split(", ")) },
+          { label: "Image URL", value: url.join(", "), setValue: (val: string) => setUrl(val.split(", ")) },
         ].map(({ label, value, setValue }) => (
           <div key={label} className="w-full">
             <label className="block mb-2 text-sm font-semibold">{label}</label>

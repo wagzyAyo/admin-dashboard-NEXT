@@ -15,10 +15,13 @@ interface cardProps{
     imageURL: string[],
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     fetchData: (endPoint: string, stateFunction: (data: any) => void) => Promise<void>;
+    endPoint: string,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    func: (data: any) => void
 }
 
 
-const Card = ({id,name, size, location,short, amount, description, fetchData}: cardProps) => {
+const Card = ({id,name, size, location,short, amount, description, fetchData, endPoint, func}: cardProps) => {
   const router = useRouter()
 
   const handleUpdate = ()=>{
@@ -31,7 +34,7 @@ const handleDelete = async ()=>{
     const response = await axios.delete(`/api/delete/${id}`)
     console.log(response.status)
     if(response.status === 200){
-        fetchData()
+        fetchData(endPoint, func )
         router.refresh()
     }else{
         console.log('Error deleting property')
