@@ -13,6 +13,7 @@ interface cardProps{
     short: string,
     description: string,
     imageURL: string[],
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     fetchData: (endPoint: string, stateFunction: (data: any) => void) => Promise<void>;
 }
 

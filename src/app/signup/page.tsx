@@ -1,5 +1,6 @@
 "use client"
 import axios from "axios";
+import { useRouter } from "next/navigation";
 import { FormEvent, useState } from "react"
 
 
@@ -7,6 +8,7 @@ const Page = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
+    const router = useRouter()
 
     const handleSubmit = async (e: FormEvent<HTMLFormElement>)=>{
       e.preventDefault();
@@ -21,6 +23,7 @@ const Page = () => {
         })
         if(response.status === 200){
           console.log("User signed Up")
+          router.push("/")
         }else{
           console.log('Unable to signup user')
           return

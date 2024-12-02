@@ -1,21 +1,24 @@
 "use client"
 import { FormEvent, useState } from "react"
 import axios from "axios";
+import { useRouter } from "next/navigation";
 
 
 const Page = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const router = useRouter()
 
     const handleSubmit = async (e: FormEvent<HTMLFormElement>)=>{
       e.preventDefault();
       try {
         const response = await axios.post('api/login', {
-          email,
+          username: email,
           password
         })
         if(response.status === 200){
           console.log('Logged in');
+          router.push("/")
           return;
         }else{
           console.log('Invalid login credentials');

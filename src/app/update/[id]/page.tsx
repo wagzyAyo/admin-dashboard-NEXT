@@ -17,6 +17,7 @@ interface PropData {
 
 const Update = ({ params }: { params: Promise<{ id: string }>}) => {
   const { id } = use(params);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [propData, setPropData] = useState<PropData | null>(null); 
   const router = useRouter()
 
@@ -116,6 +117,7 @@ const Update = ({ params }: { params: Promise<{ id: string }>}) => {
           { label: "Size", value: size, setValue: setSize },
           { label: "Short Description", value: short, setValue: setShort },
           { label: "Amount", value: amount, setValue: setAmount },
+          
           { label: "Image URL", value: url.join(", "), setValue: (val) => setUrl(val.split(", ")) },
         ].map(({ label, value, setValue }) => (
           <div key={label} className="w-full">

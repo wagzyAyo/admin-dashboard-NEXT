@@ -7,6 +7,7 @@ import { NextResponse } from "next/server";
 export async function POST(request: Request){
     await connectDb();
     const {username, password} = await request.json();
+    console.log(username, password)
     try {
         const user = await userModel.findOne({username})
         console.log(user)
