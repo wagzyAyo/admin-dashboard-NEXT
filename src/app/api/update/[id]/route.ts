@@ -2,10 +2,10 @@ import { connectDb } from "@/lib/connectDb";
 import propertyModels from "@/models/props";
 import { NextResponse } from "next/server";
 
-export async function PUT(request: Request, { params }){
+export async function PUT(request: Request, context: { params: {id: string} }){
     try {
         await connectDb();
-        const {id} = params;
+        const {id} = context.params;
         const newData = await request.json()
         console.log(newData)
         const updateProperty = await propertyModels.findOneAndUpdate({_id: id}, newData, {
