@@ -2,10 +2,6 @@ import { connectDb } from "@/lib/connectDb";
 import propertyModels from "@/models/props";
 import { NextResponse, NextRequest } from "next/server";
 
-interface Params {
-    id: string;
-  }
-
 export async function DELETE(req: NextRequest, { params }){
     try {
         await connectDb();

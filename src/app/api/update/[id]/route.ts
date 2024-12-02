@@ -2,10 +2,6 @@ import { connectDb } from "@/lib/connectDb";
 import propertyModels from "@/models/props";
 import { NextResponse } from "next/server";
 
-interface Params {
-    id: string;
-  }
-
 export async function PUT(request: Request, { params }){
     try {
         await connectDb();
