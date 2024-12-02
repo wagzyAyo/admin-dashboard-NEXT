@@ -2,7 +2,11 @@ import { connectDb } from "@/lib/connectDb";
 import propertyModels from "@/models/props";
 import { NextResponse, NextRequest } from "next/server";
 
-export async function DELETE(req: NextRequest, {params}: {params: {id: string}}){
+interface Params {
+    id: string;
+  }
+
+export async function DELETE(req: NextRequest, { params }: { params: Params }){
     try {
         await connectDb();
         const {id} = params;

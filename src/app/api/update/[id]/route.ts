@@ -2,7 +2,11 @@ import { connectDb } from "@/lib/connectDb";
 import propertyModels from "@/models/props";
 import { NextResponse } from "next/server";
 
-export async function PUT(request: Request, {params}: {params: {id: string}}){
+interface Params {
+    id: string;
+  }
+
+export async function PUT(request: Request, { params }: {params: Params}){
     try {
         await connectDb();
         const {id} = params;
