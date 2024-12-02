@@ -2,11 +2,11 @@ import { connectDb } from "@/lib/connectDb";
 import propertyModels from "@/models/props";
 import { NextResponse, NextRequest } from "next/server";
 
-export async function DELETE(req: NextRequest, {params}: { params: Promise<{id: string}> }){
+export async function DELETE(req: NextRequest){
     try {
         await connectDb();
-        console.log(req)
-        const {id} = await params;
+        const urlPaths = req.url.split('/')
+        const id = urlPaths[urlPaths.length - 2];
         const deletedProp = await propertyModels.findByIdAndDelete(id);
         if(!deletedProp){
             return NextResponse.json({message: "No property found with the id"}, {status:400})
