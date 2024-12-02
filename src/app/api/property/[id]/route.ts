@@ -2,14 +2,12 @@ import { NextRequest, NextResponse } from 'next/server';
 import { connectDb } from '@/lib/connectDb';
 import PropertyModel from '@/models/props';
 
-export async function GET(req: NextRequest, {params}: {params: {id: string}}) {
+export async function GET(req: NextRequest) {
   try {
-    await connectDb();  // Ensure the database connection
+    await connectDb(); 
+    const urlPath = req.url.split('/')
+    const id =  urlPath[urlPath.length -2]
 
-    // Extract 'id' from the URL parameters
-    const id = await params.id; // Extracts the last part of the path
-
-    // Validate the id parameter
     if (!id) {
       return NextResponse.json({ message: 'Invalid or missing property ID' }, { status: 400 });
     }
