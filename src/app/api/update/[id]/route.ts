@@ -6,7 +6,7 @@ interface Params {
     id: string;
   }
 
-export async function PUT(request: Request, { params }: {params: Params}){
+export async function PUT(request: Request, { params }){
     try {
         await connectDb();
         const {id} = params;

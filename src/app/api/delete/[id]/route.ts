@@ -6,7 +6,7 @@ interface Params {
     id: string;
   }
 
-export async function DELETE(req: NextRequest, { params }: { params: Params }){
+export async function DELETE(req: NextRequest, { params }){
     try {
         await connectDb();
         const {id} = params;
