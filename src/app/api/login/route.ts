@@ -6,14 +6,15 @@ import { NextResponse } from "next/server";
 
 export async function POST(request: Request){
     await connectDb();
-    const {email, password} = await request.json();
+    const {username, password} = await request.json();
     try {
-        const user = await userModel.findOne({email})
+        const user = await userModel.findOne({username})
+        console.log(user)
         if(user){
             const checkPassword = await bcrypt.compare(password, user.password)
             if (checkPassword){
                 //send token
-                generateToken()
+                generateToken(user._id);
                 return NextResponse.json({message: "Login successful"}, {status: 200})
             }else{
                 return NextResponse.json({message: "Invalid email or password"}, {status: 401})

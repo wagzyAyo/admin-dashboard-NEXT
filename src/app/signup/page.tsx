@@ -16,7 +16,7 @@ const Page = () => {
           return
         }
         const response = await axios.post("/api/newuser", {
-          email,
+          username: email,
           password
         })
         if(response.status === 200){
