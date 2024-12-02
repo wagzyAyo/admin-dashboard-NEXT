@@ -1,6 +1,7 @@
 import { connectDb } from "@/lib/connectDb";
 import userModel from "@/models/user";
 import bcrypt from 'bcryptjs'
+import {generateToken} from '../../../middleware/genToken'
 import { NextResponse } from "next/server";
 
 export async function POST(request: Request){
@@ -12,6 +13,7 @@ export async function POST(request: Request){
             const checkPassword = await bcrypt.compare(password, user.password)
             if (checkPassword){
                 //send token
+                generateToken()
                 return NextResponse.json({message: "Login successful"}, {status: 200})
             }else{
                 return NextResponse.json({message: "Invalid email or password"}, {status: 401})

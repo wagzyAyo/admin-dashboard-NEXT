@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken'
 import userModel from "../models/user"
 
-const authToken = async (req, res, next)=>{
+export const authToken = async (req, res, next)=>{
     const token = req.cookies.jwt;
 
     if (!token){
@@ -16,5 +16,3 @@ const authToken = async (req, res, next)=>{
         return res.status(400).json({message: "Invalid token"})
     }
 }
-
-module.exports = authToken
