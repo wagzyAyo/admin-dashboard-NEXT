@@ -10,7 +10,8 @@ export const connectDb = async () => {
   }
   
   try {
-    const db = await mongoose.connect("mongodb+srv://ola:admin@cluster0.bbiilar.mongodb.net/properties?retryWrites=true&w=majority");
+    const mongoURI = process.env.URI
+    const db = await mongoose.connect(mongoURI || "");
     
     isConnected = db.connections[0].readyState === 1;
     
