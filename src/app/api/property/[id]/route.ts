@@ -6,7 +6,9 @@ export async function GET(req: NextRequest) {
   try {
     await connectDb(); 
     const urlPath = req.url.split('/')
-    const id =  urlPath[urlPath.length -2]
+    console.log(urlPath)
+    const id =  urlPath[urlPath.length - 1]
+    console.log({property: id})
 
     if (!id) {
       return NextResponse.json({ message: 'Invalid or missing property ID' }, { status: 400 });

@@ -6,7 +6,7 @@ export async function DELETE(req: NextRequest){
     try {
         await connectDb();
         const urlPaths = req.url.split('/')
-        const id = urlPaths[urlPaths.length - 2];
+        const id = urlPaths[urlPaths.length - 1];
         const deletedProp = await propertyModels.findByIdAndDelete(id);
         if(!deletedProp){
             return NextResponse.json({message: "No property found with the id"}, {status:400})
