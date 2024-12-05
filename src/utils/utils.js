@@ -9,17 +9,18 @@ export const getData = async (endPoint, stateFunction)=>{
     }
   }
 
-  export const checkAuth = async (Router)=>{
-    const router = Router()
+  export const checkAuth = async ()=>{
+    
     try {
       const response = await fetch('/api/check-auth', {method: 'GET',credentials: 'include'})
       if(response.ok){
         const data = await response.json();
         console.log('User Authenticated', data.user)
+        return true
       }
-      router.push("/login")
+      return false
     } catch (err) {
       console.log('Error check Authentication', err)
-      router.push("/login")
+      return false
     }
   }

@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { FormEvent } from "react";
 import { checkAuth } from "@/utils/utils";
 
@@ -16,10 +16,17 @@ export default function Home() {
   const [url, setUrl] = useState("");
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
+  const route = useRouter()
 
   useEffect(()=>{
-    checkAuth(useRouter)
-  }, [])
+    const awaitAuth = async ()=>{
+      const auth = await checkAuth()
+      if(!auth){
+        route.push('/login')
+      }
+    }
+   awaitAuth();
+  }, [route])
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
