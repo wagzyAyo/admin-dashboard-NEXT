@@ -1,7 +1,9 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
+import { useRouter } from "next/router";
 import { FormEvent } from "react";
+import { checkAuth } from "@/utils/utils";
 
 export default function Home() {
   const [tag, setTag] = useState("sale");
@@ -15,11 +17,14 @@ export default function Home() {
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
 
+  useEffect(()=>{
+    checkAuth(useRouter)
+  }, [])
+
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
     setMessage("");
-    
     try {
       const response = await axios.post('/api/newproperty', {
         tag,

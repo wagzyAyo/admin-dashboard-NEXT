@@ -1,7 +1,8 @@
 "use client"
 import { useState, useEffect } from "react"
 import Card from "@/components/card"
-import { getData } from "@/utils/utils"
+import { useRouter } from "next/router"
+import { getData, checkAuth} from "@/utils/utils"
 
 interface propData {
   _id: string,
@@ -18,6 +19,7 @@ const Page = () => {
   const [data, setData] = useState<propData[]>([]);
 
   useEffect(()=>{
+    checkAuth(useRouter)
     getData('/api/lease', setData)
     
   }, [])

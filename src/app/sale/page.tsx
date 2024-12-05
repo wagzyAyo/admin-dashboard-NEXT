@@ -1,7 +1,8 @@
 "use client"
 import { useState, useEffect } from "react"
+import { useRouter } from "next/router"
 import Card from "@/components/card"
-import {getData} from '../../utils/utils'
+import {getData, checkAuth} from '../../utils/utils'
 
 
 interface propData {
@@ -19,7 +20,7 @@ const Page = () => {
 
 
   useEffect(()=>{
-   
+    checkAuth(useRouter)
     getData('/api/sales', setData)
    
   }, [])
