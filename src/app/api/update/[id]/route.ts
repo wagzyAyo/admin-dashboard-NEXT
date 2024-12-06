@@ -1,9 +1,11 @@
 import { connectDb } from "@/lib/connectDb";
 import propertyModels from "@/models/props";
-import { NextResponse, NextRequest } from "next/server";
+import { NextResponse } from "next/server";
+import { cookies } from "next/headers";
 
-export async function PUT(req: Request, request: NextRequest){
-    const token = request.cookies.get('jwt')?.value;
+export async function PUT(req: Request){
+    const cookieStore = await cookies()
+    const token = cookieStore.get('jwt')?.value;
 
 
     if(!token){
