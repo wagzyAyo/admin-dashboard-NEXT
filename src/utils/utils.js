@@ -13,8 +13,8 @@ export const getData = async (endPoint, stateFunction)=>{
     
     try {
       const response = await axios.get('/api/check-auth', {withCredentials: true})
-      if(response.ok){
-        const data = await response.json();
+      if(response.status == 200){
+        const data = response.data;
         console.log('User Authenticated', data.user)
         return true
       }

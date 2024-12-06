@@ -20,8 +20,6 @@ const Page = () => {
         const response = await axios.post("/api/newuser", {
           username: email,
           password
-        }, {
-          withCredentials: true,
         })
         if(response.status === 200){
           console.log("User signed Up")

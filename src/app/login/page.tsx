@@ -15,8 +15,6 @@ const Page = () => {
         const response = await axios.post('api/login', {
           username: email,
           password
-        },{
-          withCredentials: true,
         })
         if(response.status === 200){
           console.log('Logged in');
