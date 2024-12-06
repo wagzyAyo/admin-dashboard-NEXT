@@ -33,7 +33,7 @@ export default function Home() {
     setLoading(true);
     setMessage("");
     try {
-      const response = await axios.post('/api/newproperty', {
+      const response = await axios.post('/api/newproperty', { 
         tag,
         name,
         short,
@@ -42,6 +42,8 @@ export default function Home() {
         location,
         description,
         imageURL: url,
+      }, {
+        withCredentials: true,
       });
       if (response.status === 200) {
         setMessage("New property added successfully!");
