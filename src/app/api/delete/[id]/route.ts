@@ -3,6 +3,13 @@ import propertyModels from "@/models/props";
 import { NextResponse, NextRequest } from "next/server";
 
 export async function DELETE(req: NextRequest){
+    const token = req.cookies.get('jwt')?.value;
+
+
+    if(!token){
+        return NextResponse.json({message: "Unauthorized access"}, {status: 400})
+    }
+
     try {
         await connectDb();
         const urlPaths = req.url.split('/')

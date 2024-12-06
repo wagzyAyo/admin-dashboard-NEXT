@@ -1,8 +1,16 @@
 import { connectDb } from "@/lib/connectDb";
 import propertyModels from "@/models/props";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
-export async function POST(request: Request){
+export async function POST(request: Request, req: NextRequest){
+    const token = req.cookies.get('jwt')?.value;
+
+
+    if(!token){
+        return NextResponse.json({message: "Unauthorized access"}, {status: 400})
+    }
+
+
     try {
         await connectDb();
         const data = await request.json()

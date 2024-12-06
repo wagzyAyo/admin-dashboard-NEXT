@@ -3,6 +3,13 @@ import { connectDb } from '@/lib/connectDb';
 import PropertyModel from '@/models/props';
 
 export async function GET(req: NextRequest) {
+  const token = req.cookies.get('jwt')?.value;
+
+
+    if(!token){
+        return NextResponse.json({message: "Unauthorized access"}, {status: 400})
+    }
+
   try {
     await connectDb(); 
     const urlPath = req.url.split('/')
