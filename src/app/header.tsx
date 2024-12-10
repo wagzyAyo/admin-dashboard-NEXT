@@ -46,13 +46,13 @@ const Header = () => {
           } w-full md:block md:w-auto`}
           id="navbar-default">
           <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 md:flex-row md:space-x-12 rtl:space-x-reverse md:mt-0">
-            <li>
+            <li className="hover:text-green-900">
               <Link href="/sale">Sale</Link>
             </li>
-            <li>
+            <li className="hover:text-green-900">
               <Link href="/rent">Rent</Link>
             </li>
-            <li>
+            <li className="hover:text-green-900">
               <Link href="/lease">Lease</Link>
             </li>
           </ul>

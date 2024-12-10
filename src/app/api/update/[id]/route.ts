@@ -15,7 +15,8 @@ export async function PUT(req: Request){
     try {
         await connectDb();
         const urlPath = req.url.split('/')
-        const id =  urlPath[urlPath.length -2]
+        console.log(urlPath)
+        const id =  urlPath[urlPath.length - 1]
         const newData = await req.json()
         console.log(newData)
         const updateProperty = await propertyModels.findOneAndUpdate({_id: id}, newData, {

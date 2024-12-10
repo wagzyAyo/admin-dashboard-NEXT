@@ -3,4 +3,6 @@
 @tailwind utilities;
 
 
-
+body{
+    font-family: "Helvetica Neue, roboto, sans-serrif"
+}
