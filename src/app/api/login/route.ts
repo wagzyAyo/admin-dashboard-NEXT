@@ -15,8 +15,13 @@ export async function POST(request: Request){
             const checkPassword = await bcrypt.compare(password, user.password)
             if (checkPassword){
                 //send token
-                generateToken(user._id);
-                return NextResponse.json({message: "Login successful"}, {status: 200})
+                const token = generateToken(user._id);
+                const response = NextResponse.json({message: "Login successful"}, {status: 200});
+                response.headers.set(
+                    'Set-Cookie',
+                    `jwt=${token}; HttpOnly; Path=/; Max-Age=${30 * 24 * 60 * 60}; SameSite=Strict`
+                )
+                return response
             }else{
                 return NextResponse.json({message: "Invalid email or password"}, {status: 401})
             }
