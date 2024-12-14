@@ -1,8 +1,8 @@
-import { NextRequest, NextResponse } from "next/server";
+import { /*NextRequest,*/ NextResponse } from "next/server";
 import { connectDb } from "@/lib/connectDb";
 import propertyModels from "@/models/props";
 
-export async function GET(req: NextRequest){
+export async function GET(/*req: NextRequest*/){
     // const token = req.cookies.get('jwt')?.value;
 
 
