@@ -1,6 +1,12 @@
 import { /*NextRequest,*/ NextResponse } from "next/server";
 import { connectDb } from "@/lib/connectDb";
 import propertyModels from "@/models/props";
+import {corsResponse, corsOptionsHandler}from '../../../utils/corsUtils';
+
+export async function OPTIONS() {
+    return corsOptionsHandler();
+  }
+
 
 export async function GET(/*req: NextRequest*/){
     // const token = req.cookies.get('jwt')?.value;
@@ -16,9 +22,11 @@ export async function GET(/*req: NextRequest*/){
         if(!salesData){
             return NextResponse.json([],{status: 201})
         }
-        return NextResponse.json(salesData.reverse(), {status: 200})
+        const response = NextResponse.json(salesData.reverse(), {status: 200});
+        return corsResponse(response)
     } catch (err) {
         console.log("Error getting sales data", err);
-        return NextResponse.json({message: "Internal server error"}, {status: 500})
+        const errResponse = NextResponse.json({message: "Internal server error"}, {status: 500});
+        return corsResponse(errResponse)
     }
 }
